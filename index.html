@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Exhale</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{min-height:100vh;background:#000;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif}
+.content{text-align:center;padding:40px 20px;animation:focusIn 2s ease-out forwards}
+@keyframes focusIn{
+    0%{filter:blur(25px);opacity:.2;transform:scale(1.03)}
+    20%{filter:blur(18px);opacity:.4}
+    40%{filter:blur(12px);opacity:.6}
+    60%{filter:blur(6px);opacity:.8}
+    80%{filter:blur(2px);opacity:.95}
+    100%{filter:blur(0);opacity:1;transform:scale(1)}
+}
+h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:7rem;letter-spacing:.35em;color:#ADFBF6;text-transform:uppercase;margin-bottom:20px}
+.tagline{font-size:1.2rem;color:#ccc;letter-spacing:.1em;margin-bottom:50px}
+form{max-width:520px;margin:0 auto}
+.input-group{
+    display:flex;
+    background:linear-gradient(135deg,rgba(255,255,255,.1),rgba(255,255,255,.05));
+    backdrop-filter:blur(24px) saturate(180%);
+    -webkit-backdrop-filter:blur(24px) saturate(180%);
+    border-radius:16px;
+    padding:6px;
+    border:1px solid rgba(255,255,255,.18);
+    box-shadow:0 8px 32px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.2);
+    transition:all .4s
+}
+.input-group:hover{border-color:rgba(173,251,246,.3)}
+.input-group:focus-within{
+    border-color:rgba(173,251,246,.4);
+    box-shadow:0 12px 40px rgba(0,0,0,.45),0 0 60px rgba(173,251,246,.12)
+}
+.input-wrapper{flex:1}
+input{width:100%;padding:18px 24px;font-size:1rem;background:transparent;border:none;color:#fff;outline:none}
+input::placeholder{color:rgba(255,255,255,.45)}
+button{
+    padding:18px 36px;
+    font-size:.95rem;
+    font-weight:500;
+    letter-spacing:.05em;
+    background:linear-gradient(135deg,rgba(173,251,246,.2),rgba(173,251,246,.1));
+    backdrop-filter:blur(10px);
+    color:#ADFBF6;
+    border:1px solid rgba(173,251,246,.35);
+    border-radius:12px;
+    cursor:pointer;
+    transition:all .3s
+}
+button:hover{
+    background:linear-gradient(135deg,rgba(173,251,246,.3),rgba(173,251,246,.15));
+    border-color:rgba(173,251,246,.5);
+    color:#fff;
+    transform:translateY(-1px);
+    box-shadow:0 8px 30px rgba(173,251,246,.2)
+}
+.success{
+    display:none;
+    margin-top:24px;
+    padding:20px 28px;
+    background:linear-gradient(135deg,rgba(173,251,246,.12),rgba(173,251,246,.06));
+    backdrop-filter:blur(24px);
+    border:1px solid rgba(173,251,246,.25);
+    border-radius:12px;
+    color:#ADFBF6
+}
+.success.show{display:block;animation:fadeUp .6s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+.hidden{display:none}
+@media(max-width:768px){
+    h1{font-size:4rem;letter-spacing:.2em}
+    .input-group{flex-direction:column;padding:8px}
+    input{text-align:center}
+    button{width:100%;margin-top:8px}
+}
+@media(max-width:480px){h1{font-size:2.8rem}}
+</style>
+</head>
+<body>
+<div class="content">
+<h1>Exhale</h1>
+<p class="tagline">The AI executive for executive parents.</p>
+<form id="waitlistForm">
+<div class="input-group" id="inputGroup">
+<div class="input-wrapper"><input type="email" placeholder="Enter your email" required></div>
+<button type="submit">Join Waitlist</button>
+</div>
+<div class="success" id="successMsg">You're on the list! We'll be in touch soon.</div>
+</form>
+</div>
+<script>
+document.getElementById('waitlistForm').onsubmit = function(e) {
+    e.preventDefault();
+    document.getElementById('inputGroup').classList.add('hidden');
+    document.getElementById('successMsg').classList.add('show');
+};
+</script>
+</body>
+</html>
